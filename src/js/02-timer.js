@@ -18,17 +18,13 @@ const options = {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onClose(selectedDates) {
+  onOpen() {
     if (timerId) {
+      this.close();
       Notiflix.Notify.warning('будь ласка, оновіть сторінку');
-      return;
     }
-    if (Date.now() > selectedDates[0]) {
-      Notiflix.Notify.failure(
-        'ще не придумали машину часу, вибіріть дату в майбутньому'
-      );
-      return;
-    }
+  },
+  onClose(selectedDates) {
     console.log(selectedDates[0]);
     goalDate = selectedDates[0];
   },
@@ -38,7 +34,7 @@ const options = {
       refs.startElem.disabled = true;
 
       Notiflix.Notify.failure(
-        'ще не придумали машину часу, вибіріть дату в майбутньому'
+        'ще не придумали машину часу, вибeріть дату в майбутньому'
       );
     } else if (Date.now() < selectedDates[0]) {
       refs.startElem.disabled = false;
