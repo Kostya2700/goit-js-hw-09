@@ -12,6 +12,7 @@ formElem.addEventListener('submit', e => {
       .catch(error => Notiflix.Notify.failure(error));
 
     delay += step;
+    let delays;
   }
 });
 function createPromise(position, delay) {
